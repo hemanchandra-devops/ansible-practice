@@ -2,9 +2,9 @@
   hosts: local
   connection: local
   vars:
-  Course: ansible
-  Duration: 80
-  is_live: true
+    Course: ansible
+    Duration: 80
+    is_live: true
   Technologies: 
   - linux
   - shell
