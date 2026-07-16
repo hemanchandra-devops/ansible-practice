@@ -11,7 +11,10 @@
     private: false
   tasks:
   - name: variables
-    vars:
-      Name: from task var
+    # vars:
+    #   Name: from task var
     ansible.builtin.debug:
       msg: "Name is {{ Name }}"
+
+# 1.cmd
+# 2.task
