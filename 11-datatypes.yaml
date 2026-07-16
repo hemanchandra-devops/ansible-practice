@@ -1,0 +1,18 @@
+- name: datatypes
+  hosts: local
+  connection: local
+  vars:
+  Course: ansible
+  Duration: 80
+  is_live: true
+  Technologies: 
+  - linux
+  - shell
+  - ansible
+  concepts:
+    cloud: AWS
+    cm: ansible
+  tasks:
+  - name: variables
+    ansible.builtin.debug:
+      msg: "Course is {{ Course }}, Duration is {{ Duration }}, Is live {{  is_live }}, Technologies are {{ Technologies }}, concepts are {{ concepts }}"

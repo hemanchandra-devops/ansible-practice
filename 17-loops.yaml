@@ -1,0 +1,13 @@
+- name: loop
+  hosts: local
+  connection: local
+  become: yes
+  tasks:
+  - name: loop
+    ansible.builtin.dnf:
+      name: "{{ item.name }}" 
+      state: "{{ item.state }}"
+    loop:
+    - { name: nginx, state: absent}
+    - { name: nginx, state: absent}
+    - { name: nginx, state: absent}
