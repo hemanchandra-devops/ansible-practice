@@ -6,9 +6,9 @@
     Duration: 80
     is_live: true
   Technologies: 
-  - linux
-  - shell
-  - ansible
+    - linux
+    - shell
+    - ansible
   concepts:
     cloud: AWS
     cm: ansible
