@@ -5,10 +5,10 @@
     Name: from play var
   # vars_files:
   # - course.yaml
-  vars_prompt:
-  - name: Name
-    prompt: What is your Name
-    private: false
+  # vars_prompt:
+  # - name: Name
+  #   prompt: What is your Name
+  #   private: false
   tasks:
   - name: variables
     # vars:
@@ -19,3 +19,4 @@
 # 1.cmd
 # 2.task
 # 3.files
+# 4.prompt
