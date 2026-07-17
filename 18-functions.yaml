@@ -40,7 +40,7 @@
 
   - name: store json in a file
     ansible.builtin.copy:
-      destination: student.json
+      dest: student.json
       content: "{{ student | to_nice_json }}"
 
   - name: convert to upper case
