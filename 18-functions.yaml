@@ -3,7 +3,7 @@
   connection: local
   vars:
     name: "M.Heman Chandra"
-    ipaddress: 
+    ipaddress: 172.31.37.184
     technologies: Linux, Shell, Ansible, Aws, DevOps
     tags:
       Application: payment
@@ -26,7 +26,7 @@
     ansible.builtin.debug:
       msg: "{{ tags | dict2items }}"
 
-  - name: convert map to list
+  - name: convert list to dict  
     ansible.builtin.debug:
       msg: "{{ tagsList | items2dict }}"
 
@@ -41,7 +41,7 @@
   - name: store json in a file
     ansible.builtin.copy:
       destination: student.json
-      content: "{{ student |  to_nice_json }}"
+      content: "{{ student | to_nice_json }}"
 
   - name: convert to upper case
     ansible.builtin.debug:
