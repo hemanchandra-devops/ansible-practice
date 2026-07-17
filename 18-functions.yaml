@@ -55,22 +55,22 @@
     ansible.builtin.debug:
      msg: "{{ ipaddress | ansible.utils.ipv4 }}"
 
-  - name: search grep for root
-    ansible.builtin.command: cat /etc/passwd | grep root
-    register: grep_output
-  
-  - name: grep output
-    ansible.builtin.debug:
-     msg: "{{ grep_output }}"
-
-
   # - name: search grep for root
-  #   ansible.builtin.shell: cat /etc/passwd | grep root
+  #   ansible.builtin.command: cat /etc/passwd | grep root
   #   register: grep_output
   
   # - name: grep output
   #   ansible.builtin.debug:
   #    msg: "{{ grep_output }}"
+
+
+  - name: search grep for root
+    ansible.builtin.shell: cat /etc/passwd | grep root
+    register: grep_output
+  
+  - name: grep output
+    ansible.builtin.debug:
+     msg: "{{ grep_output }}"
 
   - name: redirect the output
     ansible.builtin.command: ls -ltr > /tmp/output.txt
