@@ -1,0 +1,91 @@
+- name: functions
+  hosts: local
+  connection: local
+  vars:
+    name: "M.Heman Chandra"
+    ipaddress: 
+    technologies: Linux, Shell, Ansible, Aws, DevOps
+    tags:
+      Application: payment
+      Environment: dev
+    tagsList:
+      - key: Application
+        value: payment
+      - key: Environment
+        value: dev
+  tasks:
+  - name: default values
+    ansible.builtin.debug:
+      msg: "{{ name | default('heman') }}"
+
+  - name: convert string to list
+    ansible.builtin.debug:
+      msg: "{{ technologies | split(',') }}"
+
+  - name: convert map to list
+    ansible.builtin.debug:
+      msg: "{{ tags | dict2items }}"
+
+  - name: convert map to list
+    ansible.builtin.debug:
+      msg: "{{ tagsList | items2dict }}"
+
+  - name: read the yaml file and store in a var
+    ansible.builtin.set_fact:
+      student: "{{ lookup('file', 'student.yaml') | from_yaml }}"
+
+  - name: convert yaml into json
+    ansible.builtin.debug:
+      msg: "{{ student | to_json }}"
+
+  - name: store json in a file
+    ansible.builtin.copy:
+      destination: student.json
+      content: "{{ student |  to_nice_json }}"
+
+  - name: convert to upper case
+    ansible.builtin.debug:
+      msg: "{{ name | upper }}"
+
+  - name: convert to lower case
+    ansible.builtin.debug:
+      msg: "{{ name | lower }}"
+      
+  - name: check ip is valid or not
+    ansible.builtin.debug:
+     msg: "{{ ipaddress | ansible.utils.ipv4 }}"
+
+  - name: search grep for root
+    ansible.builtin.command: cat /etc/passwd | grep root
+    register: grep_output
+  
+  - name: grep output
+    ansible.builtin.debug:
+     msg: "{{ grep_output }}"
+
+
+  # - name: search grep for root
+  #   ansible.builtin.shell: cat /etc/passwd | grep root
+  #   register: grep_output
+  
+  # - name: grep output
+  #   ansible.builtin.debug:
+  #    msg: "{{ grep_output }}"
+
+  - name: redirect the output
+    ansible.builtin.command: ls -ltr > /tmp/output.txt
+    register: redirect_output
+  
+  - name: redirect output
+    ansible.builtin.debug:
+     msg: "{{ redirect_output }}"
+
+
+  - name: redirect the output
+    ansible.builtin.shell: ls -ltr > /tmp/output.txt
+    register: redirect_output
+  
+  - name: redirect output
+    ansible.builtin.debug:
+     msg: "{{ redirect_output }}"
+
